@@ -2,7 +2,13 @@
 
 ## Install a window manager
 
-## Setup networking
+## Setup wireless networking
+
+To make the WiFi card work reliably, the official Marvell drivers have be installed.
+Clone the git repository at `git://git.marvell.com/mwifiex-firmware.git` and copy the `mrvl` folder to `/lib/firmware/mrvl`.
+
+Since Network Manager does not work reliably, it is recommended to use `netctl` instead.
+Instructions can be found in the relevant [Arch wiki article](https://wiki.archlinux.org/index.php/netctl).
 
 ## Reconnect the type cover
 
@@ -36,3 +42,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 ```
 
 Note that the brightness keys are actually not the alternative keys behind the `F1` and `F2` keys. These only control the keyboard backlight brightness. The display brightness can be changed using `Fn+Del` and `Fn+Backspace`.
+
+## Connect to bluetooth devices
+
+To manage bluetooth devices using `bluetoothctl`, install the *bluez* and *bluez-utils* packages and follow the instructions from the [Arch wiki article](https://wiki.archlinux.org/index.php/Bluetooth).
