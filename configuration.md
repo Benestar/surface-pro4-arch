@@ -10,6 +10,13 @@ Clone the git repository at `git://git.marvell.com/mwifiex-firmware.git` and cop
 Since Network Manager does not work reliably, it is recommended to use `netctl` instead.
 Instructions can be found in the relevant [Arch wiki article](https://wiki.archlinux.org/index.php/netctl).
 
+At the point of this writing, the official Marvell drivers cannot wake up the network card from sleep. To circumvent this problem, it might help to disable the power management for this device by adding the following lines to a new file called `/etc/udev/rules.de/70-wifi-powersafe.rules`:
+
+```
+# Disable power management for wifi card
+ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlp2s0", RUN+="iwconfig wlp2s0 power off"
+```
+
 ## Reconnect the type cover
 
 The attachable keyboard should work out of the box.
