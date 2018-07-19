@@ -17,6 +17,35 @@ At the point of this writing, the official Marvell drivers cannot wake up the ne
 ACTION=="add", SUBSYSTEM=="net", KERNEL=="wlp2s0", RUN+="iwconfig wlp2s0 power off"
 ```
 
+## Turn off natural scrolling
+
+If you want to invert the direction of your mouse wheel, you have to turn off natural scrolling.
+To achieve this, create a new file called `/etc/X11/xorg.conf.d/40-mouse.conf` with the following content:
+
+```
+Section "InputClass"
+  Identifier "libinput pointer catchall"
+  Driver "libinput"
+  MatchIsPointer "on"
+  Option "NaturalScrolling" "off"
+EndSection
+```
+
+## Touchpad on the type cover
+
+One can configure the type cover and enable tapping or natural scrolling for the touchpad by creating the file `/etc/X11/xorg.conf.d/30-touchpad.conf` and add these lines:
+
+<!-- TODO does this file exist by default?? -->
+
+```
+Section "InputClass"
+  Identifier "touchpad"
+  Driver "libinput"
+  Option "Tapping" "on"
+  Option "NaturalScrolling" "true"
+EndSection
+```
+
 ## Reconnect the type cover
 
 The attachable keyboard should work out of the box.
